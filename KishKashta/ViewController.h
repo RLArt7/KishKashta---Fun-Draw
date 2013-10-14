@@ -14,7 +14,7 @@
 
 
 @interface ViewController : UIViewController <SettingsViewControllerDelegate,UIScrollViewDelegate, UIActionSheetDelegate
-,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIDocumentInteractionControllerDelegate>{
     
     
     SettingsViewController *settingsViewController;
@@ -38,12 +38,15 @@
 
 
 @property (nonatomic, retain) SettingsViewController *settingsViewController;
+@property (nonatomic, strong) UIDocumentInteractionController *dic;
 
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;
 @property (weak, nonatomic) IBOutlet UIImageView *tempDrawImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+
 
 
 - (IBAction)save:(id)sender;

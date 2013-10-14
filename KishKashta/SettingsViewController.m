@@ -46,6 +46,13 @@
 
 - (void)viewDidLoad
 {
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        // iOS 7
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    } else {
+        // iOS 6
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    }
     [super viewDidLoad];
     
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone)
@@ -78,7 +85,18 @@
             [self.view addSubview:brightnessSlider];
             [self.view addSubview:colorPicker];
         }
+    }else{
+        colorPicker = [[RSColorPickerView alloc] initWithFrame:CGRectMake(158, 489, 450, 450)];
+        [colorPicker setCropToCircle:YES]; // Defaults to YES (and you can set BG color)
+        [colorPicker setBackgroundColor:NULL];
+        [colorPicker setDelegate:self];
+        // View that controls brightness
+        brightnessSlider = [[RSBrightnessSlider alloc] initWithFrame:CGRectMake(25,450,200,30)];
+        [brightnessSlider setColorPicker:colorPicker];
+        [self.view addSubview:brightnessSlider];
+        [self.view addSubview:colorPicker];
     }
+    
     
     
 
@@ -94,6 +112,25 @@
 //	colorPatch = [[UIView alloc] initWithFrame:CGRectMake(220, 150, 150, 30.0)];
 //	[self.view addSubview:colorPatch];
 	// Do any additional setup after loading the view.
+}
+
+-(void) bannerViewDidLoadAd:(ADBannerView *)banner{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1];
+    [banner setAlpha:1];
+//    [banner accessibilityViewIsModal];
+    [UIView commitAnimations];
+    
+}
+-(void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1];
+    [banner setAlpha:0];
+    [UIView commitAnimations];
+    
+}
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 -(void)colorPickerDidChangeSelection:(RSColorPickerView *)cp
 {

@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <Foundation/Foundation.h>
+#import <iAd/iAd.h>
 
 
 @protocol SettingsViewControllerDelegate <NSObject>//,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -20,7 +21,7 @@
 - (void)closeSettings:(id)sender;
 @end
 
-@interface SettingsViewController : UIViewController{
+@interface SettingsViewController : UIViewController<RSColorPickerViewDelegate,ADBannerViewDelegate>{
 
 }
 @property CGFloat red;

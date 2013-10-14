@@ -2,7 +2,7 @@
 //  ViewController.m
 //  KishKashta
 //
-//  Created by Harel Avikasis on 04/03/13.
+//  Created by Harel Avikasis on 04/03/13.ohhhyeeeaaahh
 //  Copyright (c) 2013 Harel Avikasis. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ALToastView.h"
 #import "Twitter/TWTweetComposeViewController.h"
+#import "AppDelegate.h"
 
 
 @interface ViewController ()
@@ -22,8 +23,19 @@
 @synthesize settingsViewController;
 @synthesize scrollView;
 
+
 - (void)viewDidLoad
 {
+
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        // iOS 7
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    } else {
+        // iOS 6
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    }
+    
     red = 0.0/255.0;
     green = 0.0/255.0;
     blue = 0.0/255.0;
@@ -42,6 +54,9 @@
     
     self.view.multipleTouchEnabled = YES;
 
+}
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 
@@ -228,39 +243,54 @@
 - (IBAction)save:(id)sender {
     
     
-    NSArray *activityItems;
+//    NSArray *activityItems;
     
     UIGraphicsBeginImageContextWithOptions(mainImage.bounds.size, NO,0.0);
     [mainImage.image drawInRect:CGRectMake(0, 0, mainImage.frame.size.width, mainImage.frame.size.height)];
-    UIImage *SaveImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *savedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-        activityItems = @[@"Check out this drawing I made in the new app KishKashta",SaveImage ];
+//        activityItems = @[@"Check out this drawing I made in the new app KishKashta",savedImage ];
 
-    UIActivityViewController *activityController =
-    [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
-    activityController.excludedActivityTypes=@[UIActivityTypeAssignToContact,/*UIActivityTypeMail,UIActivityTypeCopyToPasteboard,*/UIActivityTypePrint,UIActivityTypeMessage ,UIActivityTypePostToWeibo];
+//    UIActivityViewController *activityController =
+//    [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
+//    activityController.excludedActivityTypes=@[UIActivityTypeAssignToContact,UIActivityTypePrint,UIActivityTypePostToWeibo];
+//    
+//    [self presentViewController:activityController
+//                       animated:YES completion:nil];
+//    [activityController setCompletionHandler:^(NSString *act, BOOL done){
+//        NSString *ServiceMsg = nil;
+//        if ( [act isEqualToString:UIActivityTypeMail] )           ServiceMsg = @"Mail was sent!";
+//        if ( [act isEqualToString:UIActivityTypePostToTwitter] )  ServiceMsg = @"Posted on twitter";
+//        if ( [act isEqualToString:UIActivityTypePostToFacebook] ) ServiceMsg = @"Posted on facebook";
+//        if ( [act isEqualToString:UIActivityTypeMessage] )        ServiceMsg = @"SMS was sent!";
+//        if ( [act isEqualToString:UIActivityTypeAirDrop] )        ServiceMsg = @"The Image Arrived!";
+//        if ( [act isEqualToString:UIActivityTypeSaveToCameraRoll]) ServiceMsg = @"Image Saved";
+//        if ( done )
+//            {
+//                toastInView:withText:[ALToastView toastInView:self.view withText:ServiceMsg];
+//            }
+//    }];
+    NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString * jpgPath = [documentsDirectory stringByAppendingPathComponent:@"KishKashtaDraw.png"];
+    NSData *imageData = UIImageJPEGRepresentation(savedImage, 0.8);
+    [imageData writeToFile:jpgPath atomically:YES];
+    NSURL *url = [NSURL fileURLWithPath:jpgPath];
     
-    [self presentViewController:activityController
-                       animated:YES completion:nil];
-    [activityController setCompletionHandler:^(NSString *act, BOOL done){
-        
-        NSString *ServiceMsg = nil;
-        if ( [act isEqualToString:UIActivityTypeMail] )           ServiceMsg = @"Mail sended!";
-        if ( [act isEqualToString:UIActivityTypePostToTwitter] )  ServiceMsg = @"Posted on twitter";
-        if ( [act isEqualToString:UIActivityTypePostToFacebook] ) ServiceMsg = @"Posted on facebook";
-//        if ( [act isEqualToString:UIActivityTypeMessage] )        ServiceMsg = @"SMS sended!";
-        if ( [act isEqualToString:UIActivityTypeAirDrop] )        ServiceMsg = @"The Image Arrived!";
-//        if ( [act isEqualToString:UIActivity] )        ServiceMsg = @"The Image Arrived!";
-        if ( [act isEqualToString:UIActivityTypeSaveToCameraRoll]) ServiceMsg = @"Image Saved";
-        if ( done )
-            {
-                toastInView:withText:[ALToastView toastInView:self.view withText:ServiceMsg];
-            }
-    }];
+    self.dic = [UIDocumentInteractionController interactionControllerWithURL: url];
+//    [self.dic retain];
+
+    self.dic.delegate = self;
+    [self.dic presentOptionsMenuFromRect:CGRectZero inView:self.view animated:YES];
     
     
+
+
+
+
 }
+
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
@@ -327,7 +357,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 
         [drawArray addObject:mainImage.image];
-        [drawArray addObject:self.tempDrawImage.image];
+        if (self.tempDrawImage.image==nil) {
+            
+        }else{
+            [drawArray addObject:self.tempDrawImage.image];
+        }
 //        [redoArray addObject:self.tempDrawImage.image];
 //        [redoArray addObject:mainImage.image];
 
@@ -364,7 +398,27 @@ finishedSavingWithError:(NSError *)error
 
 
 - (IBAction)reset:(id)sender{
-    self.mainImage.image = nil;
+    if(self.tempDrawImage.image!=nil){
+        UIGraphicsBeginImageContext(self.mainImage.frame.size);
+//        [drawArray addObject:self.tempDrawImage.image];
+        [self.mainImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:1.0];
+        [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:opacity];
+        self.mainImage.image = UIGraphicsGetImageFromCurrentImageContext();
+        [drawArray addObject:self.mainImage.image];
+        [drawArray addObject:self.mainImage.image];
+//        self.tempDrawImage.image = nil;
+        UIGraphicsEndImageContext();
+//        [drawArray addObject:drawArray.lastObject];
+        self.mainImage.image =nil;
+        self.tempDrawImage.image=nil;
+
+    }else{
+        [drawArray addObject:self.mainImage.image];
+        [drawArray addObject:self.mainImage.image];
+        self.mainImage.image =nil;
+        self.tempDrawImage.image=nil;
+    }
+
 }
 
 @end

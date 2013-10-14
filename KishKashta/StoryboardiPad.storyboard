@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="np7-P5-K9X">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="nsv-uL-pC5">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="np7-P5-K9X" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="naJ-6W-YGS"/>
+                        <viewControllerLayoutGuide type="bottom" id="gef-3F-vku"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="13f-m4-qpg">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HQI-ue-cVm" userLabel="mainImage">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UP7-zV-Ce3" userLabel="tempImage">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUL-Jw-3K3">
+                                <rect key="frame" x="650" y="7" width="51" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="h2a-qy-CnF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="settings" image="settingsios7new.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="okU-pC-hfl" kind="modal" modalTransitionStyle="partialCurl" id="cok-Qy-aMK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diC-Zg-6hF">
+                                <rect key="frame" x="710" y="12" width="39" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="TLW-yA-f3X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="newPage" image="newpageios7new.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="reset:" destination="np7-P5-K9X" eventType="touchUpInside" id="gr7-Yl-mgL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukm-n3-AGL">
+                                <rect key="frame" x="20" y="7" width="48" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="Mt1-Wg-8xz"/>
+                                    <constraint firstAttribute="height" constant="39" id="ibt-kZ-9jb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="share" image="shareIos7new.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="save:" destination="np7-P5-K9X" eventType="touchUpInside" id="Qvw-KB-jbM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdU-Pl-Ffa">
+                                <rect key="frame" x="89" y="965" width="42" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="laP-hm-G2S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Undo" image="undoios7new.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="undoButtonClicked:" destination="np7-P5-K9X" eventType="touchUpInside" id="s3p-Ss-2Am"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZB-CH-eJi" userLabel="Button - redo">
+                                <rect key="frame" x="654" y="965" width="42" height="44"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Undo" image="redoios7new.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="redoButtonClicked:" destination="np7-P5-K9X" eventType="touchUpInside" id="ZQX-Cj-xsK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7G-Vh-U8Y" userLabel="Button - camera">
+                                <rect key="frame" x="86" y="7" width="48" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="Dqq-3y-flE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="share" image="cameraios7new.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="useCamera" destination="np7-P5-K9X" eventType="touchUpInside" id="2No-7m-iqI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UP7-zV-Ce3" firstAttribute="trailing" secondItem="HQI-ue-cVm" secondAttribute="trailing" id="CLW-8a-lUq"/>
+                            <constraint firstItem="gef-3F-vku" firstAttribute="top" secondItem="diC-Zg-6hF" secondAttribute="bottom" constant="978" id="Cxf-sA-iCS"/>
+                            <constraint firstAttribute="bottom" secondItem="UP7-zV-Ce3" secondAttribute="bottom" id="Czn-CY-bJv"/>
+                            <constraint firstItem="gef-3F-vku" firstAttribute="top" secondItem="SZB-CH-eJi" secondAttribute="bottom" constant="15" id="KnK-gY-J6p"/>
+                            <constraint firstItem="UP7-zV-Ce3" firstAttribute="bottom" secondItem="HQI-ue-cVm" secondAttribute="bottom" id="M7H-Ol-WHc"/>
+                            <constraint firstItem="q7G-Vh-U8Y" firstAttribute="leading" secondItem="13f-m4-qpg" secondAttribute="leading" constant="86" id="M9T-kC-1tA"/>
+                            <constraint firstItem="q7G-Vh-U8Y" firstAttribute="top" secondItem="ukm-n3-AGL" secondAttribute="top" id="N4V-Sd-XJi"/>
+                            <constraint firstItem="diC-Zg-6hF" firstAttribute="top" secondItem="13f-m4-qpg" secondAttribute="top" constant="12" id="OpU-Qv-yOC"/>
+                            <constraint firstItem="SZB-CH-eJi" firstAttribute="centerX" secondItem="OUL-Jw-3K3" secondAttribute="centerX" id="Uhn-w1-rqU"/>
+                            <constraint firstItem="gef-3F-vku" firstAttribute="top" secondItem="OUL-Jw-3K3" secondAttribute="bottom" constant="974" id="aMX-07-eeJ"/>
+                            <constraint firstItem="UP7-zV-Ce3" firstAttribute="top" secondItem="13f-m4-qpg" secondAttribute="top" id="cho-Ea-pUe"/>
+                            <constraint firstItem="mdU-Pl-Ffa" firstAttribute="centerX" secondItem="q7G-Vh-U8Y" secondAttribute="centerX" id="dGF-es-eAp"/>
+                            <constraint firstAttribute="trailing" secondItem="diC-Zg-6hF" secondAttribute="trailing" constant="19" id="eLG-rC-TCQ"/>
+                            <constraint firstItem="q7G-Vh-U8Y" firstAttribute="top" secondItem="OUL-Jw-3K3" secondAttribute="top" id="gLN-7a-9Do"/>
+                            <constraint firstItem="UP7-zV-Ce3" firstAttribute="leading" secondItem="13f-m4-qpg" secondAttribute="leading" id="hNO-aM-BNY"/>
+                            <constraint firstItem="diC-Zg-6hF" firstAttribute="bottom" secondItem="ukm-n3-AGL" secondAttribute="bottom" id="kjX-A3-zqJ"/>
+                            <constraint firstItem="mdU-Pl-Ffa" firstAttribute="bottom" secondItem="SZB-CH-eJi" secondAttribute="bottom" id="nBd-gQ-zYR"/>
+                            <constraint firstItem="UP7-zV-Ce3" firstAttribute="leading" secondItem="HQI-ue-cVm" secondAttribute="leading" id="pem-IN-mI2"/>
+                            <constraint firstItem="mdU-Pl-Ffa" firstAttribute="leading" secondItem="13f-m4-qpg" secondAttribute="leading" constant="89" id="qP7-hN-5Vd"/>
+                            <constraint firstItem="UP7-zV-Ce3" firstAttribute="top" secondItem="HQI-ue-cVm" secondAttribute="top" id="rlM-Tl-R4r"/>
+                            <constraint firstItem="q7G-Vh-U8Y" firstAttribute="bottom" secondItem="ukm-n3-AGL" secondAttribute="bottom" id="tDI-G8-UTN"/>
+                            <constraint firstItem="q7G-Vh-U8Y" firstAttribute="leading" secondItem="ukm-n3-AGL" secondAttribute="trailing" constant="18" id="tgz-Xp-9ye"/>
+                            <constraint firstAttribute="trailing" secondItem="UP7-zV-Ce3" secondAttribute="trailing" id="uhf-7m-1j7"/>
+                            <constraint firstAttribute="trailing" secondItem="SZB-CH-eJi" secondAttribute="trailing" constant="72" id="wTI-Wj-LAI"/>
+                            <constraint firstItem="diC-Zg-6hF" firstAttribute="leading" secondItem="OUL-Jw-3K3" secondAttribute="trailing" constant="9" id="wWs-Q8-4en"/>
+                            <constraint firstItem="mdU-Pl-Ffa" firstAttribute="top" secondItem="SZB-CH-eJi" secondAttribute="top" id="xjE-YR-JVK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainImage" destination="HQI-ue-cVm" id="oXc-xq-zwA"/>
+                        <outlet property="tempDrawImage" destination="UP7-zV-Ce3" id="bjO-dn-7jn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3si-dx-9AZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" numberOfTouchesRequired="2" id="O5S-aX-A5l"/>
+            </objects>
+            <point key="canvasLocation" x="-291" y="-340"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="3uJ-HP-EOZ">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="okU-pC-hfl" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ElJ-gx-hIP"/>
+                        <viewControllerLayoutGuide type="bottom" id="Svl-lk-jv6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nJI-bL-qWd">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="canvasKishKashtabackground.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Adt-I7-9xt" userLabel="backgroung - canvasKishKashtabackground.jpg">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="80" translatesAutoresizingMaskIntoConstraints="NO" id="CjD-CY-wTj">
+                                <rect key="frame" x="165" y="153" width="313" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="sliderChanged:" destination="okU-pC-hfl" eventType="valueChanged" id="dNc-OS-IZ3"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="10.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eH9-Bg-NIl">
+                                <rect key="frame" x="497" y="141" width="82" height="45"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="1.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ep1-Sq-JRR">
+                                <rect key="frame" x="497" y="223" width="82" height="45"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Brush" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRg-eH-A1l">
+                                <rect key="frame" x="55" y="149" width="92" height="37"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Opacity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Je8-5X-Iae">
+                                <rect key="frame" x="55" y="226" width="104" height="40"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="YaQ-EY-6Vp">
+                                <rect key="frame" x="165" y="233" width="313" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="sliderChanged:" destination="okU-pC-hfl" eventType="valueChanged" id="W9U-el-xgi"/>
+                                </connections>
+                            </slider>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p2Y-Y2-8nN" userLabel="preview">
+                                <rect key="frame" x="597" y="364" width="142" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQz-Uk-0dj" userLabel="Button - Black">
+                                <rect key="frame" x="0.0" y="628" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="BlackIpad.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="okU-pC-hfl" eventType="touchUpInside" id="4n3-mI-6v5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raw-HB-V2Y" userLabel="Button - Blue">
+                                <rect key="frame" x="0.0" y="667" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="BlueIpad.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="okU-pC-hfl" eventType="touchUpInside" id="CXz-mV-Lc8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikJ-bQ-blZ" userLabel="Button - Brown">
+                                <rect key="frame" x="0.0" y="707" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="BrownIpad.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="okU-pC-hfl" eventType="touchUpInside" id="7RW-3w-3EY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vrg-fJ-1si" userLabel="Button - Green">
+                                <rect key="frame" x="0.0" y="747" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="DarkGreenIpad.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="okU-pC-hfl" eventType="touchUpInside" id="wjy-S8-wMB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlW-xI-bAA" userLabel="Button - Red">
+                                <rect key="frame" x="0.0" y="787" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="RedIpad.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="okU-pC-hfl" eventType="touchUpInside" id="72Q-p3-fmR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbj-mp-gLA" userLabel="Button - Orange">
+                                <rect key="frame" x="618" y="628" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="DarkOrangeIpad.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="okU-pC-hfl" eventType="touchUpInside" id="upW-l2-wgu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ea-8x-KiS" userLabel="Button - Grey">
+                                <rect key="frame" x="618" y="667" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="GreyIpad.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="okU-pC-hfl" eventType="touchUpInside" id="grm-Ou-j0b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDL-p4-Dvy" userLabel="Button - LightGreen">
+                                <rect key="frame" x="618" y="707" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="LightGreenIpad.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="okU-pC-hfl" eventType="touchUpInside" id="bmk-2L-ddt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLg-He-lU0" userLabel="Button - Yellow">
+                                <rect key="frame" x="618" y="747" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="YellowIpad.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="okU-pC-hfl" eventType="touchUpInside" id="agG-Gn-HHg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avL-67-1qh" userLabel="Button - LightBlue">
+                                <rect key="frame" x="618" y="787" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="LightBlueIpad.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="okU-pC-hfl" eventType="touchUpInside" id="JaE-xK-fCB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXh-eM-KVl" userLabel="Button - LightBlue">
+                                <rect key="frame" x="624" y="450" width="150" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="EraserIpad landscape.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="eraserPressed:" destination="okU-pC-hfl" eventType="touchUpInside" id="jqU-ee-9lL"/>
+                                </connections>
+                            </button>
+                            <adBannerView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="bottom" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PJE-SQ-FwD">
+                                <rect key="frame" x="0.0" y="964" width="768" height="66"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="okU-pC-hfl" id="NBM-6h-FMP"/>
+                                </connections>
+                            </adBannerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="idW-Pz-4Ou" appends="YES" id="Vus-kZ-ODR"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="brushControl" destination="CjD-CY-wTj" id="Xyr-u6-Wno"/>
+                        <outlet property="brushPreview" destination="p2Y-Y2-8nN" id="4eL-Eb-6zg"/>
+                        <outlet property="brushValueLabel" destination="eH9-Bg-NIl" id="V86-XP-jiA"/>
+                        <outlet property="opacityControl" destination="YaQ-EY-6Vp" id="LZD-tp-BC3"/>
+                        <outlet property="opacityPreview" destination="p2Y-Y2-8nN" id="RSH-lb-Efa"/>
+                        <outlet property="opacityValueLabel" destination="ep1-Sq-JRR" id="YLH-Xo-2dn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="87g-XW-WaC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" numberOfTouchesRequired="2" id="idW-Pz-4Ou">
+                    <connections>
+                        <action selector="closeSettings:" destination="okU-pC-hfl" id="mz0-jn-sMp"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="554" y="-314"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BlackIpad.png" width="332" height="53"/>
+        <image name="BlueIpad.png" width="332" height="53"/>
+        <image name="BrownIpad.png" width="332" height="53"/>
+        <image name="DarkGreenIpad.png" width="332" height="53"/>
+        <image name="DarkOrangeIpad.png" width="332" height="53"/>
+        <image name="EraserIpad landscape.png" width="167" height="55"/>
+        <image name="GreyIpad.png" width="332" height="53"/>
+        <image name="LightBlueIpad.png" width="332" height="53"/>
+        <image name="LightGreenIpad.png" width="332" height="53"/>
+        <image name="RedIpad.png" width="332" height="53"/>
+        <image name="YellowIpad.png" width="332" height="53"/>
+        <image name="cameraios7new.png" width="213" height="158"/>
+        <image name="canvasKishKashtabackground.jpg" width="818" height="1024"/>
+        <image name="newpageios7new.png" width="154" height="213"/>
+        <image name="redoios7new.png" width="104" height="192"/>
+        <image name="settingsios7new.png" width="213" height="213"/>
+        <image name="shareIos7new.png" width="154" height="213"/>
+        <image name="undoios7new.png" width="104" height="192"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="lightContent"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
