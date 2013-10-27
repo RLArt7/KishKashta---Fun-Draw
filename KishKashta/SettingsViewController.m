@@ -118,7 +118,6 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:1];
     [banner setAlpha:1];
-//    [banner accessibilityViewIsModal];
     [UIView commitAnimations];
     
 }
@@ -129,6 +128,7 @@
     [UIView commitAnimations];
     
 }
+
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }

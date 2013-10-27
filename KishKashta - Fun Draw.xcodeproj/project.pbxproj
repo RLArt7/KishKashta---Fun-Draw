@@ -79,6 +79,10 @@
 		93957B9A17F59F8E00DDE00A /* Icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = 93957B9917F59F8E00DDE00A /* Icon-58.png */; };
 		93957BA317F5A68600DDE00A /* canvasKishKashtabackground1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 93957BA217F5A68600DDE00A /* canvasKishKashtabackground1.jpg */; };
 		93957BA517F5A6FA00DDE00A /* canvasKishKashtabackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 93957BA417F5A6FA00DDE00A /* canvasKishKashtabackground.jpg */; };
+		93A782EC180E05DC0064292C /* GoodToGoicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A782EB180E05DC0064292C /* GoodToGoicon.png */; };
+		93A782F0180E06D60064292C /* Button-Back-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A782EF180E06D60064292C /* Button-Back-icon.png */; };
+		93A782F2180E09B20064292C /* Gooooodios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A782F1180E09B20064292C /* Gooooodios7.png */; };
+		93A782F4180E0A740064292C /* gooodIos7bold.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A782F3180E0A740064292C /* gooodIos7bold.png */; };
 		93BA5671180C1F3B00C0D3CF /* StoryboardiPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BA5670180C1F3B00C0D3CF /* StoryboardiPad.storyboard */; };
 		93BA5695180C3F1E00C0D3CF /* BlackIpad.png in Resources */ = {isa = PBXBuildFile; fileRef = 93BA568A180C3F1E00C0D3CF /* BlackIpad.png */; };
 		93BA5696180C3F1E00C0D3CF /* BlueIpad.png in Resources */ = {isa = PBXBuildFile; fileRef = 93BA568B180C3F1E00C0D3CF /* BlueIpad.png */; };
@@ -204,6 +208,10 @@
 		93957B9917F59F8E00DDE00A /* Icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-58.png"; sourceTree = "<group>"; };
 		93957BA217F5A68600DDE00A /* canvasKishKashtabackground1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = canvasKishKashtabackground1.jpg; sourceTree = "<group>"; };
 		93957BA417F5A6FA00DDE00A /* canvasKishKashtabackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = canvasKishKashtabackground.jpg; sourceTree = "<group>"; };
+		93A782EB180E05DC0064292C /* GoodToGoicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodToGoicon.png; sourceTree = "<group>"; };
+		93A782EF180E06D60064292C /* Button-Back-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Back-icon.png"; sourceTree = "<group>"; };
+		93A782F1180E09B20064292C /* Gooooodios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gooooodios7.png; sourceTree = "<group>"; };
+		93A782F3180E0A740064292C /* gooodIos7bold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gooodIos7bold.png; sourceTree = "<group>"; };
 		93BA5670180C1F3B00C0D3CF /* StoryboardiPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardiPad.storyboard; sourceTree = "<group>"; };
 		93BA568A180C3F1E00C0D3CF /* BlackIpad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackIpad.png; sourceTree = "<group>"; };
 		93BA568B180C3F1E00C0D3CF /* BlueIpad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueIpad.png; sourceTree = "<group>"; };
@@ -321,6 +329,10 @@
 			children = (
 				93BA5689180C3F1E00C0D3CF /* ipadColor */,
 				93957B8D17F4F1E800DDE00A /* undoios7new.png */,
+				93A782F1180E09B20064292C /* Gooooodios7.png */,
+				93A782F3180E0A740064292C /* gooodIos7bold.png */,
+				93A782EB180E05DC0064292C /* GoodToGoicon.png */,
+				93A782EF180E06D60064292C /* Button-Back-icon.png */,
 				93957B8517F4F09900DDE00A /* shareIos7new.png */,
 				9347B46F17F0A03A00058C2E /* redoIos7.png */,
 				93957B8B17F4F19A00DDE00A /* redoios7new.png */,
@@ -538,9 +550,11 @@
 				933D3DBB16E54756002B6540 /* b.png in Resources */,
 				933D3DBC16E54756002B6540 /* Black.png in Resources */,
 				93957B9017F4F28300DDE00A /* cameraios7new.png in Resources */,
+				93A782F4180E0A740064292C /* gooodIos7bold.png in Resources */,
 				933D3DBD16E54756002B6540 /* Blue.png in Resources */,
 				933D3DBE16E54756002B6540 /* Brown.png in Resources */,
 				93FAD7C517F7844800281D34 /* Icon-29.png in Resources */,
+				93A782EC180E05DC0064292C /* GoodToGoicon.png in Resources */,
 				93BA569C180C3F1E00C0D3CF /* LightBlueIpad.png in Resources */,
 				933D3DBF16E54756002B6540 /* Custom-Color.png in Resources */,
 				93957B9617F59F0500DDE00A /* Icon-80.png in Resources */,
@@ -565,6 +579,7 @@
 				93BA569A180C3F1E00C0D3CF /* EraserIpad.png in Resources */,
 				93FAD7C917F7859F00281D34 /* Images.xcassets in Resources */,
 				93BA569D180C3F1E00C0D3CF /* LightGreenIpad.png in Resources */,
+				93A782F0180E06D60064292C /* Button-Back-icon.png in Resources */,
 				93957B8E17F4F1E800DDE00A /* undoios7new.png in Resources */,
 				933D3DC716E54756002B6540 /* Opacity.png in Resources */,
 				9347B46817F0402400058C2E /* newPageIos7.png in Resources */,
@@ -573,6 +588,7 @@
 				933D3DC816E54756002B6540 /* r.png in Resources */,
 				933D3DC916E54756002B6540 /* Red.png in Resources */,
 				93957B8817F4F10700DDE00A /* newpageios7new.png in Resources */,
+				93A782F2180E09B20064292C /* Gooooodios7.png in Resources */,
 				93BA56AF180C82EB00C0D3CF /* Default-Portrait@2x~ipad.png in Resources */,
 				9347B47117F0A03A00058C2E /* redoIos7.png in Resources */,
 				93BA56AD180C828300C0D3CF /* Default~ipad.png in Resources */,
@@ -721,8 +737,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KishKashta/KishKashta - Fun Draw-Prefix.pch";
 				INFOPLIST_FILE = "KishKashta/KishKashta - Fun Draw-Info.plist";
@@ -732,6 +748,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -742,8 +759,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KishKashta/KishKashta - Fun Draw-Prefix.pch";
 				INFOPLIST_FILE = "KishKashta/KishKashta - Fun Draw-Info.plist";
@@ -753,6 +770,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
