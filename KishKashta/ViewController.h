@@ -11,7 +11,14 @@
 
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <Social/Social.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <CoreVideo/CoreVideo.h>
+#import <CoreMedia/CoreMedia.h>
+#import <CoreImage/CoreImage.h>
 
+typedef void(^ProgressBlock)(CGFloat progress);
+typedef void(^CompletionBlock)(NSDictionary* info, NSError* error);
 
 @interface ViewController : UIViewController <SettingsViewControllerDelegate,UIScrollViewDelegate, UIActionSheetDelegate
 ,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIDocumentInteractionControllerDelegate>{
@@ -27,10 +34,10 @@
     CGFloat opacity;
     BOOL mouseSwiped;
     BOOL newMedia;
+    BOOL thereIsAPicThere;
     UIImage *tempImg;
     NSMutableArray *drawArray;
     NSMutableArray *redoArray;
-    
     
 }
 
@@ -39,9 +46,11 @@
 
 @property (nonatomic, retain) SettingsViewController *settingsViewController;
 @property (nonatomic, strong) UIDocumentInteractionController *dic;
+@property (nonatomic, strong) UIDocumentInteractionController *dic2;
 
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;
 @property (weak, nonatomic) IBOutlet UIImageView *tempDrawImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -53,8 +62,10 @@
 - (IBAction)reset:(id)sender;
 - (IBAction)useCamera;
 
+
 -(IBAction)redoButtonClicked:(id)sender;
 
+- (IBAction)createVideo:(id)sender;
 
 
 

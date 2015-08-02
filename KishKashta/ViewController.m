@@ -17,6 +17,10 @@
 
 @end
 
+NSInteger sort(id a, id b, void *reverse) {
+    return [a compare:b options:NSNumericSearch];
+}
+
 @implementation ViewController
 
 @synthesize mainImage;
@@ -41,13 +45,18 @@
     blue = 0.0/255.0;
     brush = 10.0;
     opacity = 1.0;
+    
     drawArray =[[NSMutableArray alloc]init];
     redoArray =[[NSMutableArray alloc]init];
+    
+//    self.mainImage.image=[UIImage imageNamed:@"WhitePage.png"];
+//    [drawArray addObject:self.mainImage.image];
+    
     [[self scrollView] setMinimumZoomScale:1.0];
     [[self scrollView] setMaximumZoomScale:6.0];
     
     
-    
+    [ViewController clearTmpDirectory];
     
     [super viewDidLoad];
     
@@ -55,8 +64,31 @@
     self.view.multipleTouchEnabled = YES;
 
 }
++ (void)clearTmpDirectory
+{
+    NSArray* tmpDirectory = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:NSTemporaryDirectory() error:NULL];
+    for (NSString *file in tmpDirectory) {
+        [[NSFileManager defaultManager] removeItemAtPath:[NSString stringWithFormat:@"%@%@", NSTemporaryDirectory(), file] error:NULL];
+    }
+}
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+- (UIImage*)imageWithBorderFromImage:(UIImage*)source
+{
+    const CGFloat margin = 40.0f;
+    CGSize size = CGSizeMake([source size].width + 2*margin, [source size].height + 2*margin);
+    UIGraphicsBeginImageContext(size);
+    
+    [[UIColor whiteColor] setFill];
+    [[UIBezierPath bezierPathWithRect:CGRectMake(0, 0, size.width, size.height)] fill];
+    
+    CGRect rect = CGRectMake(margin, margin, size.width-2*margin, size.height-2*margin);
+    [source drawInRect:rect blendMode:kCGBlendModeNormal alpha:1.0];
+    
+    UIImage *testImg =  UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return testImg;
 }
 
 
@@ -197,7 +229,6 @@
     ViewController *view = [self.storyboard
                             instantiateViewControllerWithIdentifier:@"SettingsViewController"];
     view.modalTransitionStyle = UIModalTransitionStylePartialCurl;
-//    NSLog(@"VIEW LOOOOOOOOKKKKKEEEE HEEREEEE: %@",view);
     self.settingsViewController=(SettingsViewController *)view;
     settingsViewController.delegate = self;
     settingsViewController.brush = brush;
@@ -333,50 +364,16 @@
     
 //    NSArray *activityItems;
     
-    UIGraphicsBeginImageContextWithOptions(mainImage.bounds.size, NO,0.0);
-    [mainImage.image drawInRect:CGRectMake(0, 0, mainImage.frame.size.width, mainImage.frame.size.height)];
-    UIImage *savedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-//        activityItems = @[@"Check out this drawing I made in the new app KishKashta",savedImage ];
-
-//    UIActivityViewController *activityController =
-//    [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
-//    activityController.excludedActivityTypes=@[UIActivityTypeAssignToContact,UIActivityTypePrint,UIActivityTypePostToWeibo];
-//    
-//    [self presentViewController:activityController
-//                       animated:YES completion:nil];
-//    [activityController setCompletionHandler:^(NSString *act, BOOL done){
-//        NSString *ServiceMsg = nil;
-//        if ( [act isEqualToString:UIActivityTypeMail] )           ServiceMsg = @"Mail was sent!";
-//        if ( [act isEqualToString:UIActivityTypePostToTwitter] )  ServiceMsg = @"Posted on twitter";
-//        if ( [act isEqualToString:UIActivityTypePostToFacebook] ) ServiceMsg = @"Posted on facebook";
-//        if ( [act isEqualToString:UIActivityTypeMessage] )        ServiceMsg = @"SMS was sent!";
-//        if ( [act isEqualToString:UIActivityTypeAirDrop] )        ServiceMsg = @"The Image Arrived!";
-//        if ( [act isEqualToString:UIActivityTypeSaveToCameraRoll]) ServiceMsg = @"Image Saved";
-//        if ( done )
-//            {
-//                toastInView:withText:[ALToastView toastInView:self.view withText:ServiceMsg];
-//            }
-//    }];
-    NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    NSString * jpgPath = [documentsDirectory stringByAppendingPathComponent:@"KishKashtaDraw.png"];
-    NSData *imageData = UIImageJPEGRepresentation(savedImage, 0.8);
-    [imageData writeToFile:jpgPath atomically:YES];
-    NSURL *url = [NSURL fileURLWithPath:jpgPath];
-    
-    self.dic = [UIDocumentInteractionController interactionControllerWithURL: url];
-//    [self.dic retain];
-
-    self.dic.delegate = self;
-    [self.dic presentOptionsMenuFromRect:CGRectZero inView:self.view animated:YES];
+    UIActionSheet *actionSheet2 = [[UIActionSheet alloc] initWithTitle:@""
+                                                              delegate:self
+                                                     cancelButtonTitle:nil
+                                                destructiveButtonTitle:nil
+                                                     otherButtonTitles:@"Share Photo", @"Share Video", @"Cancel", nil];
+    actionSheet2.tag=11;
+    [actionSheet2 showInView:self.view];
     
     
-
-
-
-
-}
+ }
 
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -407,6 +404,29 @@
                 [self presentViewController:imagePicker animated:YES completion:nil];
                 newMedia = NO;
             }
+        }
+    }
+    if(actionSheet.tag==11){
+        if (buttonIndex == 0){
+            UIGraphicsBeginImageContextWithOptions(mainImage.bounds.size, NO,0.0);
+            [mainImage.image drawInRect:CGRectMake(0, 0, mainImage.frame.size.width, mainImage.frame.size.height)];
+            UIImage *savedImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            
+            NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+            NSString * jpgPath = [documentsDirectory stringByAppendingPathComponent:@"KishKashtaDraw.png"];
+            NSData *imageData = UIImageJPEGRepresentation(savedImage, 0.8);
+            [imageData writeToFile:jpgPath atomically:YES];
+            NSURL *url = [NSURL fileURLWithPath:jpgPath];
+            
+            self.dic = [UIDocumentInteractionController interactionControllerWithURL: url];
+            
+            self.dic.delegate = self;
+            [self.dic presentOptionsMenuFromRect:CGRectZero inView:self.view animated:YES];
+        }
+        if (buttonIndex==1){
+            [self createVideo:self];
         }
     }
 }
@@ -504,6 +524,8 @@ finishedSavingWithError:(NSError *)error
 //        [drawArray addObject:drawArray.lastObject];
         self.mainImage.image =nil;
         self.tempDrawImage.image=nil;
+//        self.mainImage.image=[UIImage imageNamed:@"WhitePage.png"];
+//        [drawArray addObject:self.mainImage.image];
 
     }else{
         if(self.mainImage.image !=nil){
@@ -511,11 +533,198 @@ finishedSavingWithError:(NSError *)error
         [drawArray addObject:self.mainImage.image];
         self.mainImage.image =nil;
         self.tempDrawImage.image=nil;
+//        self.mainImage.image=[UIImage imageNamed:@"WhitePage.png"];
+//        [drawArray addObject:self.mainImage.image];
         }else{
             return;
         }
     }
+    
+    NSString *path = [NSTemporaryDirectory() stringByAppendingString:@"movie.mp4"];
+    [self clearTmp:path];
+}
 
+
+- (void)writeImageAsMovie:(NSArray *)array toPath:(NSString*)path size:(CGSize)size duration:(int)duration
+{
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+
+    NSError *error = nil;
+    AVAssetWriter *videoWriter = [[AVAssetWriter alloc] initWithURL:[NSURL fileURLWithPath:path]
+                                                           fileType:AVFileTypeMPEG4
+                                                              error:&error];
+    NSParameterAssert(videoWriter);
+    
+    NSDictionary *videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   AVVideoCodecH264, AVVideoCodecKey,
+                                   [NSNumber numberWithInt:size.width], AVVideoWidthKey,
+                                   [NSNumber numberWithInt:size.height], AVVideoHeightKey,
+                                   nil];
+    AVAssetWriterInput* writerInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo
+                                                                          outputSettings:videoSettings];
+    
+    AVAssetWriterInputPixelBufferAdaptor *adaptor = [AVAssetWriterInputPixelBufferAdaptor assetWriterInputPixelBufferAdaptorWithAssetWriterInput:writerInput
+                                                                                                                     sourcePixelBufferAttributes:nil];
+    NSParameterAssert(writerInput);
+    NSParameterAssert([videoWriter canAddInput:writerInput]);
+    [videoWriter addInput:writerInput];
+    
+    
+    //Start a session:
+    [videoWriter startWriting];
+    [videoWriter startSessionAtSourceTime:kCMTimeZero];
+    
+    CVPixelBufferRef buffer = NULL;
+    buffer = [self pixelBufferFromCGImage:[[array objectAtIndex:0] CGImage]];
+    CVPixelBufferPoolCreatePixelBuffer (NULL, adaptor.pixelBufferPool, &buffer);
+    
+    [adaptor appendPixelBuffer:buffer withPresentationTime:kCMTimeZero];
+    int i = 1;
+    while (1)
+    {
+		if(writerInput.readyForMoreMediaData){
+            
+			CMTime frameTime = CMTimeMake(1, 10 );
+			CMTime lastTime=CMTimeMake(i, 10);
+			CMTime presentTime=CMTimeAdd(lastTime, frameTime);
+			
+			if (i >= [array count])
+			{
+				buffer = NULL;
+			}
+			else
+			{
+				buffer = [self pixelBufferFromCGImage:[[array objectAtIndex:i] CGImage]];
+			}
+			
+			
+			if (buffer)
+			{
+				// append buffer
+				[adaptor appendPixelBuffer:buffer withPresentationTime:presentTime];
+				i++;
+			}
+			else
+			{
+				
+				//Finish the session:
+				[writerInput markAsFinished];
+//				[videoWriter finishWriting];
+                [videoWriter finishWritingWithCompletionHandler:^{
+                    CVPixelBufferPoolRelease(adaptor.pixelBufferPool);
+                    
+                }];
+
+				
+				CVPixelBufferPoolRelease(adaptor.pixelBufferPool);
+				
+				NSLog (@"Done");
+				break;
+			}
+		}
+    }
+    CVPixelBufferPoolRelease(adaptor.pixelBufferPool);
+}
+
+
+
+- (CVPixelBufferRef) pixelBufferFromCGImage: (CGImageRef) image
+{
+
+    NSDictionary *options = [[NSDictionary alloc] initWithObjectsAndKeys:
+                         [NSNumber numberWithBool:YES], kCVPixelBufferCGImageCompatibilityKey,
+                         [NSNumber numberWithBool:YES], kCVPixelBufferCGBitmapContextCompatibilityKey,
+                             nil];
+    CVPixelBufferRef pxbuffer = NULL;
+    
+
+    CVPixelBufferCreate(kCFAllocatorDefault, CGImageGetWidth(image),
+                        CGImageGetHeight(image), kCVPixelFormatType_32ARGB, (__bridge CFDictionaryRef) options,
+                        &pxbuffer);
+    
+    
+    CVPixelBufferLockBaseAddress(pxbuffer, 0);
+    void *pxdata = CVPixelBufferGetBaseAddress(pxbuffer);
+    NSParameterAssert(pxdata != NULL);
+    
+    CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(pxdata, self.mainImage.frame.size.width,
+                                                 self.mainImage.frame.size.height, 8, 4*self.mainImage.frame.size.width, rgbColorSpace,
+                                                 kCGImageAlphaNoneSkipFirst);
+    NSParameterAssert(context);
+    CGContextConcatCTM(context, CGAffineTransformMakeRotation(0));
+    CGContextDrawImage(context, CGRectMake(0, 0, CGImageGetWidth(image),
+                                           CGImageGetHeight(image)), image);
+    CGColorSpaceRelease(rgbColorSpace);
+    CGContextRelease(context);
+    
+    CVPixelBufferUnlockBaseAddress(pxbuffer, 0);
+    
+    return pxbuffer;
+}
+
+
+
+
+- (IBAction)createVideo:(id)sender {
+    if([drawArray count]<30){
+        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Short Draw" message:@"The Video is less then 1.0 sec" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }else{
+        
+        
+
+        NSMutableArray *nameArray=[[NSMutableArray alloc]init];
+        NSString *path = [NSTemporaryDirectory() stringByAppendingString:@"movie.mp4"];
+        
+        NSArray *array=[self copyArray:drawArray];
+
+        for(int i=0;i<array.count;i++){
+            if ([array objectAtIndex:i])
+                {
+                    [UIImagePNGRepresentation([array objectAtIndex:i]) writeToFile:[NSTemporaryDirectory()    stringByAppendingFormat:@"%d.png",i] atomically:YES];
+                    NSString *pathName = [NSTemporaryDirectory() stringByAppendingFormat:@"%d.png",i];
+                    UIImage *imgi=[UIImage imageWithContentsOfFile:pathName];
+                    if(imgi){
+                        [nameArray addObject:imgi];
+                    }
+                }
+        }
+        NSArray *refArray=[self copyArray:nameArray];
+        [self writeImageAsMovie:refArray toPath:path size:CGSizeMake(self.mainImage.frame.size.width,self.mainImage.frame.size.height ) duration:1];
+        for(int i=0;i<array.count;i++){
+                if ([array objectAtIndex:i])
+                {
+                    NSString *pathName = [NSTemporaryDirectory() stringByAppendingFormat:@"%d.png",i];
+                    [[NSFileManager defaultManager] removeItemAtPath:pathName error:nil];
+                }
+        }
+        NSURL *pathURL=[NSURL fileURLWithPath:path];
+        [self saveVideo:pathURL];
+    }
+}
+-(void)saveVideo:(NSURL *)pathUrl{
+    self.dic2 = [UIDocumentInteractionController interactionControllerWithURL: pathUrl];
+    self.dic2.delegate = self;
+    [self.dic2 presentOptionsMenuFromRect:CGRectZero inView:self.view animated:YES];
+}
+
+-(NSArray *)copyArray:(NSMutableArray*)mutableArray{
+    NSArray *array=[NSArray arrayWithArray:mutableArray];
+    return array;
+    
+}
+-(UIImage *)getFirstImage:(NSMutableArray*)mutableArray{
+    UIImage *image=[mutableArray objectAtIndex:0];
+   
+    
+    return image;
+    
+}
+-(void)clearTmp:(NSString *)pathToClean{
+    if ([[NSFileManager defaultManager] fileExistsAtPath:pathToClean])
+        [[NSFileManager defaultManager] removeItemAtPath:pathToClean error:nil];
 }
 
 @end
